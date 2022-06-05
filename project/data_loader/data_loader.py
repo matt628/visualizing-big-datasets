@@ -3,9 +3,9 @@ from typing import Tuple
 import pandas as pd
 from pandas import DataFrame
 
-FMNIST = 'resources/fmnist.csv'
-REUTERS = 'resources/reuters.csv'
-SMALLNORB = 'resources/smallnorb.csv'
+FMNIST = 'resources/datasets/fmnist.csv'
+REUTERS = 'resources/datasets/reuters.csv'
+SMALLNORB = 'resources/datasets/smallnorb.csv'
 
 
 def __load_dataset(path: str, target_idx=-1) -> Tuple[DataFrame, DataFrame]:
