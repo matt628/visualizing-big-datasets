@@ -4,34 +4,32 @@ import pandas as pd
 import seaborn as sns
 import pacmap
 import trimap
-
 from numpy.typing import ArrayLike
-from pandas import DataFrame
 from sklearn.manifold import Isomap
 
 
-def execute_pacmap(x: DataFrame, y: DataFrame, dataset_name: str):
+def execute_pacmap(x: ArrayLike, y: ArrayLike, dataset_name: str):
     embedding = pacmap.PaCMAP(n_components=2)
-    logging.info("PaCMAP is starting.")
+    logging.info("PaCMAP has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("PaCMAP was completed.")
-    __show_result(x_transformed, y.to_numpy(), "PaCMAP & " + dataset_name)
+    __show_result(x_transformed, y, "PaCMAP & " + dataset_name)
 
 
-def execute_trimap(x: DataFrame, y: DataFrame, dataset_name: str):
-    embedding = trimap.TRIMAP(n_dims=2, distance='manhattan')
-    logging.info("TRIMAP is starting.")
+def execute_trimap(x: ArrayLike, y: ArrayLike, dataset_name: str):
+    embedding = trimap.TRIMAP(n_dims=2)
+    logging.info("TRIMAP has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("TRIMAP was completed.")
-    __show_result(x_transformed, y.to_numpy(), "TRIMAP & " + dataset_name)
+    __show_result(x_transformed, y, "TRIMAP & " + dataset_name)
 
 
-def execute_isomap(x: DataFrame, y: DataFrame, dataset_name: str):
+def execute_isomap(x: ArrayLike, y: ArrayLike, dataset_name: str):
     embedding = Isomap(n_components=2)
-    logging.info("Isomap is starting.")
+    logging.info("Isomap has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("Isomap was completed.")
-    __show_result(x_transformed, y.to_numpy(), "Isomap & " + dataset_name)
+    __show_result(x_transformed, y, "Isomap & " + dataset_name)
 
 
 def __show_result(x_transformed: ArrayLike, y: ArrayLike, chart_title: str):
