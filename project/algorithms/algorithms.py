@@ -9,7 +9,8 @@ from sklearn.manifold import Isomap
 
 
 def execute_pacmap(x: ArrayLike, y: ArrayLike, dataset_name: str):
-    embedding = pacmap.PaCMAP(n_components=2)
+    # embedding = pacmap.PaCMAP(n_components=2, n_neighbors=14, FP_ratio=2.2, MN_ratio=0.8)
+    embedding = pacmap.PaCMAP(n_components=2, n_neighbors=25, FP_ratio=0.2, MN_ratio=2.5, distance='angular')
     logging.info("PaCMAP has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("PaCMAP was completed.")
@@ -17,7 +18,7 @@ def execute_pacmap(x: ArrayLike, y: ArrayLike, dataset_name: str):
 
 
 def execute_trimap(x: ArrayLike, y: ArrayLike, dataset_name: str):
-    embedding = trimap.TRIMAP(n_dims=2)
+    embedding = trimap.TRIMAP(n_dims=2, n_inliers=18, n_outliers=6, n_random=5, distance='angular')
     logging.info("TRIMAP has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("TRIMAP was completed.")
@@ -25,7 +26,7 @@ def execute_trimap(x: ArrayLike, y: ArrayLike, dataset_name: str):
 
 
 def execute_isomap(x: ArrayLike, y: ArrayLike, dataset_name: str):
-    embedding = Isomap(n_components=2)
+    embedding = Isomap(n_components=2, n_neighbors=10, neighbors_algorithm='ball_tree')
     logging.info("Isomap has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("Isomap was completed.")
