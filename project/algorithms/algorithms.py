@@ -17,7 +17,7 @@ pacmap_args = {
         'random_state': 45
     }, "smallnorb": {
         'n_components': 2,
-        'n_neighbors': 20,
+        'n_neighbors': 24,
         'FP_ratio': 0.2,
         'MN_ratio': 3.0,
         'distance': 'angular',
@@ -41,10 +41,10 @@ trimap_args = {
         'n_inliers': 20,
         'n_outliers': 10,
         'n_random': 10,
-        'distance': 'angular'
+        'distance': 'cosine'
     }, 'reuters': {
         'n_dims': 2,
-        'distance': 'angular'
+        'distance': 'cosine'
     }
 }
 
@@ -57,15 +57,15 @@ umap_args = {
         'random_state': 45
     }, "smallnorb": {
         'n_components': 2,
-        'n_neighbors': 20,
-        'spread': 0.3,
-        'metric': 'angular',
+        'n_neighbors': 24,
+        'spread': 0.5,
+        'metric': 'cosine',
         'random_state': 45
     }, 'reuters': {
         'n_components': 2,
         'n_neighbors': 10,
         'spread': 0.4,
-        'metric': 'angular',
+        'metric': 'cosine',
         'random_state': 45
     },
 }
