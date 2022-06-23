@@ -4,13 +4,75 @@ import pandas as pd
 import seaborn as sns
 import pacmap
 import trimap
+import umap
+import numpy as np
 from numpy.typing import ArrayLike
-from sklearn.manifold import Isomap
+
+pacmap_args = {
+    'FMnist': {
+        'n_components': 2,
+        'n_neighbors': 15,
+        'MN_ratio': 1.5,
+        'distance': 'euclidean',
+        'random_state': 45
+    }, "Smallnorb": {
+        'n_components': 2,
+        'n_neighbors': 20,
+        'FP_ratio': 0.2,
+        'MN_ratio': 3.0,
+        'distance': 'angular',
+        'num_iters': 1000,
+        'random_state': 45
+    }, 'Reuters': {
+        'n_components': 2,
+        'n_neighbors': 10,
+        'MN_ratio': 1.5,
+        'distance': 'cosine',
+        'random_state': 45
+    }
+}
+
+trimap_args = {
+    'FMnist': {
+        'n_dims': 2,
+        'distance': 'euclidean'
+    }, "Smallnorb": {
+        'n_dims': 2,
+        'n_inliers': 20,
+        'n_outliers': 10,
+        'n_random': 10,
+        'distance': 'cosine'
+    }, 'Reuters': {
+        'n_dims': 2,
+        'distance': 'cosine'
+    }
+}
+
+umap_args = {
+    'FMnist': {
+        'n_components': 2,
+        'n_neighbors': 15,
+        'spread': 1.4,
+        'metric': 'euclidean',
+        'random_state': 45
+    }, "Smallnorb": {
+        'n_components': 2,
+        'n_neighbors': 20,
+        'spread': 0.3,
+        'metric': 'cosine',
+        'random_state': 45
+    }, 'Reuters': {
+        'n_components': 2,
+        'n_neighbors': 10,
+        'spread': 0.4,
+        'metric': 'cosine',
+        'random_state': 45
+    },
+}
 
 
 def execute_pacmap(x: ArrayLike, y: ArrayLike, dataset_name: str):
-    # embedding = pacmap.PaCMAP(n_components=2, n_neighbors=14, FP_ratio=2.2, MN_ratio=0.8)
-    embedding = pacmap.PaCMAP(n_components=2, n_neighbors=25, FP_ratio=0.2, MN_ratio=2.5, distance='angular')
+    embedding = pacmap.PaCMAP(**pacmap_args.get(dataset_name))
     logging.info("PaCMAP has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("PaCMAP was completed.")
@@ -18,19 +80,19 @@ def execute_pacmap(x: ArrayLike, y: ArrayLike, dataset_name: str):
 
 
 def execute_trimap(x: ArrayLike, y: ArrayLike, dataset_name: str):
-    embedding = trimap.TRIMAP(n_dims=2, n_inliers=18, n_outliers=6, n_random=5, distance='angular')
+    embedding = trimap.TRIMAP(**trimap_args.get(dataset_name))
     logging.info("TRIMAP has been launched.")
     x_transformed = embedding.fit_transform(x)
     logging.info("TRIMAP was completed.")
     __show_result(x_transformed, y, "TRIMAP & " + dataset_name)
 
 
-def execute_isomap(x: ArrayLike, y: ArrayLike, dataset_name: str):
-    embedding = Isomap(n_components=2, n_neighbors=10, neighbors_algorithm='ball_tree')
-    logging.info("Isomap has been launched.")
+def execute_umap(x: ArrayLike, y: ArrayLike, dataset_name: str):
+    embedding = umap.UMAP(**umap_args.get(dataset_name))
+    logging.info("UMAP has been launched.")
     x_transformed = embedding.fit_transform(x)
-    logging.info("Isomap was completed.")
-    __show_result(x_transformed, y, "Isomap & " + dataset_name)
+    logging.info("UMAP was completed.")
+    __show_result(x_transformed, y, "UMAP & " + dataset_name)
 
 
 def __show_result(x_transformed: ArrayLike, y: ArrayLike, chart_title: str):
