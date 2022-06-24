@@ -37,5 +37,5 @@ def run_algorithms(dataset_loader: Callable, dataset_name: str):
 if __name__ == '__main__':
     set_up_logger()
     # run_algorithms(load_fmnist, "fmnist")
-    # run_algorithms(load_reuters, "reuters")
-    run_algorithms(load_smallnorb, "smallnorb")
+    run_algorithms(load_reuters, "reuters")
+    # run_algorithms(load_smallnorb, "smallnorb")
