@@ -1,0 +1,14 @@
+2022-06-26 22:29:04 INFO     reuters processing has been started.
+2022-06-26 22:29:04 INFO     Dataset is fetching.
+2022-06-26 22:29:06 INFO     Dataset was fetched to memory.
+2022-06-26 22:29:06 INFO     Run embedding algorithms.
+2022-06-26 22:29:06 INFO     PaCMAP has been launched.
+2022-06-26 22:29:58 INFO     PaCMAP was completed.
+2022-06-26 22:30:02 INFO     TRIMAP has been launched.
+2022-06-26 22:31:06 INFO     TRIMAP was completed.
+2022-06-26 22:31:10 INFO     UMAP has been launched.
+2022-06-26 22:32:22 INFO     UMAP was completed.
+2022-06-26 22:32:26 INFO     Processing was finished.
+2022-06-26 22:32:26 INFO     Run method to calculate metrics.
+2022-06-26 22:35:13 INFO     Metrics were calculated.
+2022-06-26 22:35:13 INFO     reuters processing is completed.

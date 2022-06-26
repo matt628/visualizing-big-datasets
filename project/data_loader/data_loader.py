@@ -30,7 +30,7 @@ def load_fmnist() -> Tuple[DataFrame, DataFrame]:
 
 
 def load_reuters() -> Tuple[DataFrame, DataFrame]:
-    return __load_dataset(REUTERS, drop=8)
+    return __load_dataset(REUTERS)
 
 
 def load_smallnorb() -> Tuple[DataFrame, DataFrame]:

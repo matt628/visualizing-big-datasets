@@ -8,7 +8,9 @@ from project.metrics.metrics_visalizer import visualize_metric
 def set_up_logger():
     logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s',
                         level=logging.INFO,
-                        datefmt='%Y-%m-%d %H:%M:%S')
+                        datefmt='%Y-%m-%d %H:%M:%S',
+                        filename='logsReuters.log',
+                        filemode='w')
 
 
 def run_algorithms(dataset_loader: Callable, dataset_name: str):
@@ -23,7 +25,8 @@ def run_algorithms(dataset_loader: Callable, dataset_name: str):
     embeddings = {
         'pacmap': execute_pacmap(x, y, dataset_name),
         'trimap': execute_trimap(x, y, dataset_name),
-        'umap': execute_umap(x, y, dataset_name)
+        'umap': execute_umap(x, y, dataset_name),
+        # 'lle': execute_lle(x, y, dataset_name)
     }
     logging.info("Processing was finished.")
 
